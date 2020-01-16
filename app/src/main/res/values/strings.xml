@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecipePuppy</string>
+    <string name="item_recipe_title">RecipeTitle</string>
+    <string name="item_recipe_ingredients">RecipeIngredients</string>
 </resources>
