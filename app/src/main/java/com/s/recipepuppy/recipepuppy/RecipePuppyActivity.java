@@ -14,11 +14,11 @@ import com.s.recipepuppy.domain.pojo.Recipe;
 
 import java.util.List;
 
-public class RecipePuppyActivity extends AppCompatActivity implements RecipePuppyContract.View{
+public class RecipePuppyActivity extends AppCompatActivity implements RecipePuppyContract.View {
     private static final String TAG = RecipePuppyActivity.class.getSimpleName();
 
-    private RecipePuppyContract.Presenter mPresenter;
     private RecipePuppyAdapter mAdapterRecipes;
+    private RecipePuppyContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,26 +27,28 @@ public class RecipePuppyActivity extends AppCompatActivity implements RecipePupp
 
         mPresenter = new RecipePuppyPresenter(this);
         initRecyclerView();
+        // todo: использование переменных должно быть максимально близко к их объявлению +
         mPresenter.fetchRecipes();
     }
 
-    private void initRecyclerView(){
-        mAdapterRecipes = new RecipePuppyAdapter(this);
+    private void initRecyclerView() {
+        mAdapterRecipes = new RecipePuppyAdapter();
         RecyclerView recyclerRecipesView = findViewById(R.id.rv_recipes_list);
 
-        try{
-            ((SimpleItemAnimator) recyclerRecipesView.getItemAnimator()).setSupportsChangeAnimations(false);
-        }
-        catch (NullPointerException e){
-            Log.e("Error set animator", e.toString());
-        }
+//        try {
+//            ((SimpleItemAnimator) recyclerRecipesView.getItemAnimator()).setSupportsChangeAnimations(false);
+//        } catch (NullPointerException e) {
+//            // todo: не проглатывать исключение, а выводить Toastом +
+//            // действительно ли здесь нужен getItemAnimator?
+//            Log.e("Error set animator", e.toString());
+//        }
 
-        recyclerRecipesView.setLayoutManager(new LinearLayoutManager(this));
+        // todo: layoutmanager можно установить в разметке +
         recyclerRecipesView.setAdapter(mAdapterRecipes);
         recyclerRecipesView.setHasFixedSize(true);
     }
 
-    public void setRecipesToAdapter(final List<Recipe> fetchedRecipes){
+    public void setRecipesToAdapter(final List<Recipe> fetchedRecipes) {
         mAdapterRecipes.addAllRecipes(fetchedRecipes);
     }
 
@@ -56,10 +58,12 @@ public class RecipePuppyActivity extends AppCompatActivity implements RecipePupp
         Toast.makeText(this, errorStr, Toast.LENGTH_SHORT).show();
     }
 
+
+    // todo: сначала очищаешь все ресурсы, потом super.onDestroy(); +
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         mPresenter.onDestroy();
         Log.d(TAG, "OnDestroy");
+        super.onDestroy();
     }
 }

@@ -12,21 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".splashscreen.SplashActivity"
+
+        <activity
+            android:name=".recipepuppy.RecipePuppyActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="asd"
-            android:screenOrientation="portrait"
+            android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".recipepuppy.RecipePuppyActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

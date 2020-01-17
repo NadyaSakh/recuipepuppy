@@ -13,16 +13,17 @@ import com.s.recipepuppy.domain.remote.PuppyRecipesAPI;
 
 
 public class App extends Application {
-    private static ApiClient mApiCient;
+    // todo: m? или s? +
+    private static ApiClient sApiCient;
 
     @NonNull
-    public static PuppyRecipesAPI api() { return mApiCient.puppyRecipesAPI(); }
+    public static PuppyRecipesAPI api() { return sApiCient.puppyRecipesAPI(); }
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        mApiCient = ApiClient.instance();
+        sApiCient = ApiClient.instance();
 
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

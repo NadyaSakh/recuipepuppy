@@ -11,16 +11,16 @@ public final class ApiClient {
     private final Retrofit mRetrofit;
     private PuppyRecipesAPI mPuppyRecipesAPI;
 
-//Этот класс должен быть singleton-объектом
-    public PuppyRecipesAPI puppyRecipesAPI(){
-        if(mPuppyRecipesAPI == null){
+    //Этот класс должен быть singleton-объектом, todo:почему? + потому что в однопоточном приложении должен быть единственный экземпляр api, и предоставлять глобальную точку доступа к экземпляру этого класса
+    public PuppyRecipesAPI puppyRecipesAPI() {
+        if (mPuppyRecipesAPI == null) {
             mPuppyRecipesAPI = mRetrofit.create(PuppyRecipesAPI.class);
         }
         return mPuppyRecipesAPI;
     }
 
-    public static ApiClient instance(){
-        if(instance == null){
+    public static ApiClient instance() {
+        if (instance == null) {
             instance = new ApiClient();
         }
         return instance;
@@ -38,7 +38,7 @@ public final class ApiClient {
         mRetrofit = retrofitCreate(httpClient);
     }
 
-    private Retrofit retrofitCreate(final OkHttpClient client){
+    private Retrofit retrofitCreate(final OkHttpClient client) {
         final String BASE_URL = "http://www.recipepuppy.com/api/";
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)

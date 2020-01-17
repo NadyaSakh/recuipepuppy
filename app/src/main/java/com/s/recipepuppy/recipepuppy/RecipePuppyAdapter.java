@@ -22,15 +22,7 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
     private final static String TAG = RecipePuppyAdapter.class.getSimpleName();
 
     private List<Recipe> mRecipeList = new ArrayList<>();
-    private Context mContext;
-
-    RecipePuppyAdapter(final List<Recipe> list ){
-        mRecipeList = new ArrayList<>(list);
-    }
-
-    RecipePuppyAdapter(Context context) {
-        mContext = context;
-    }
+    //todo: контекст можно получить из itemView см. ниже +
 
     @NonNull
     @Override
@@ -51,7 +43,7 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
         return mRecipeList.size();
     }
 
-    void addAllRecipes(List<Recipe> list){
+    void addAllRecipes(List<Recipe> list) {
         mRecipeList.clear();
         mRecipeList.addAll(list);
         notifyDataSetChanged();
@@ -69,12 +61,14 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
             mImage = itemView.findViewById(R.id.iv_recipe_item_image);
         }
 
-        private void bind(Recipe recipe){
-            mTitle.setText(recipe.getTitle().replace("\n",""));
-            mIngredients.setText(recipe.getIngredients());
-            String link = recipe.getThumbnail();
-            if(!link.isEmpty()){
-                Glide.with(mContext).load(recipe.getThumbnail()).into(mImage);
+        private void bind(Recipe recipe) {
+            mTitle.setText(recipe.title().replace("\n", ""));
+            mIngredients.setText(recipe.ingredients());
+            String link = recipe.thumbnail();
+            if (!link.isEmpty()) {
+                Glide.with(itemView.getContext()) // todo: стараемся сократить область использования context +
+                        .load(link)
+                        .into(mImage);
             }
         }
     }

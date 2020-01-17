@@ -10,9 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 class RecipesRepository {
-    private static final String TAG = "RecipesRepository";
+    private static final String TAG = RecipesRepository.class.getSimpleName();
 
-    RecipesRepository() { }
+    // todo: конструктор по умолчанию создается сам +
 
     Single<RecipesResponse> loadRecipes() {
         Log.d(TAG, "Start loading");

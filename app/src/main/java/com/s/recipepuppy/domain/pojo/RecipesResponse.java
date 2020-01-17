@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: rename to RecipesResponse
+//todo: rename to RecipesResponse +
 public class RecipesResponse {
     @SerializedName("title")
     private String title;
@@ -24,7 +24,7 @@ public class RecipesResponse {
 
     }
 
-    public RecipesResponse(RecipesResponse other) {
+    public RecipesResponse(final RecipesResponse other) {
         this.title = other.title;
         this.version = other.version;
         this.href = other.href;

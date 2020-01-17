@@ -26,19 +26,20 @@ public class Recipe {
         this.thumbnail = other.thumbnail;
     }
 
-    public String getTitle() {
+    // todo: старайся в POJO объектах по минимуму использовать префикс get +
+    public String title() {
         return title;
     }
 
-    public String getHref() {
+    public String href() {
         return href;
     }
 
-    public String getIngredients() {
+    public String ingredients() {
         return ingredients;
     }
 
-    public String getThumbnail() {
+    public String thumbnail() {
         return thumbnail;
     }
 
