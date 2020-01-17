@@ -1,17 +1,19 @@
 package com.s.recipepuppy.recipepuppy;
 
+import com.s.recipepuppy.domain.pojo.Recipe;
+
 import java.util.List;
 
-public class RecipePuppyContract {
+class RecipePuppyContract {
     interface View {
-        //methods
+        //methods обработка ошибок, сообщения
+        void showError(String errorStr);
+        void setRecipesToAdapter(final List<Recipe> fetchedRecipes);
     }
 
     interface Presenter {
-        void onButtonWasClicked();
+        void fetchRecipes(); // fetch рецептов
+        void onDestroy(); // удалять подписки
     }
 
-    interface Model {
-        List loadRecipes();
-    }
 }

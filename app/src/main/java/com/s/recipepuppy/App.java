@@ -8,12 +8,21 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.s.recipepuppy.domain.remote.ApiClient;
+import com.s.recipepuppy.domain.remote.PuppyRecipesAPI;
+
 
 public class App extends Application {
+    private static ApiClient mApiCient;
+
+    @NonNull
+    public static PuppyRecipesAPI api() { return mApiCient.puppyRecipesAPI(); }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mApiCient = ApiClient.instance();
 
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
