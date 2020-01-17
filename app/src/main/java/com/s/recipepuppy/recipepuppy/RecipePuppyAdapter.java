@@ -1,34 +1,35 @@
 package com.s.recipepuppy.recipepuppy;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.util.Log;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.s.recipepuppy.R;
 import com.s.recipepuppy.domain.pojo.Recipe;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.RecipeViewHolder> {
     private final static String TAG = RecipePuppyAdapter.class.getSimpleName();
 
-    private final List<Recipe> mRecipeList;
+    private List<Recipe> mRecipeList = new ArrayList<>();
+    private Context mContext;
 
     RecipePuppyAdapter(final List<Recipe> list ){
         mRecipeList = new ArrayList<>(list);
+    }
+
+    RecipePuppyAdapter(Context context) {
+        mContext = context;
     }
 
     @NonNull
@@ -69,17 +70,12 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
         }
 
         private void bind(Recipe recipe){
-            mTitle.setText(recipe.getTitle());
+            mTitle.setText(recipe.getTitle().replace("\n",""));
             mIngredients.setText(recipe.getIngredients());
-//            try{
-//                URL newurl = new URL(recipe.getThumbnail());
-//                Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
-//                mImage.setImageBitmap(mIcon_val);
-//            }
-//            catch (IOException e){
-//                Log.d(TAG, e.toString());
-//            }
-
+            String link = recipe.getThumbnail();
+            if(!link.isEmpty()){
+                Glide.with(mContext).load(recipe.getThumbnail()).into(mImage);
+            }
         }
     }
 }

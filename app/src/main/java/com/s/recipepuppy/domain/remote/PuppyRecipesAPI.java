@@ -1,6 +1,6 @@
 package com.s.recipepuppy.domain.remote;
 
-import com.s.recipepuppy.domain.pojo.Recipes;
+import com.s.recipepuppy.domain.pojo.RecipesResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -13,5 +13,5 @@ public interface PuppyRecipesAPI {
      */
     @GET("?")
     @Headers({"Content-Type: text/plain"})
-    Single<Recipes> fetchPuppyRecipes(@Query("i") String ingredients, @Query("q") String query, @Query("p") int pages);
+    Single<RecipesResponse> fetchPuppyRecipes(@Query("i") String ingredients, @Query("q") String query, @Query("p") int pages);
 }

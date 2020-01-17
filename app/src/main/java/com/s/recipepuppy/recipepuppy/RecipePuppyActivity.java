@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.s.recipepuppy.R;
 import com.s.recipepuppy.domain.pojo.Recipe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipePuppyActivity extends AppCompatActivity implements RecipePuppyContract.View{
@@ -32,9 +31,7 @@ public class RecipePuppyActivity extends AppCompatActivity implements RecipePupp
     }
 
     private void initRecyclerView(){
-        List<Recipe> recipes = new ArrayList<>();// получить рецепты с апи
-
-         mAdapterRecipes = new RecipePuppyAdapter(recipes);
+        mAdapterRecipes = new RecipePuppyAdapter(this);
         RecyclerView recyclerRecipesView = findViewById(R.id.rv_recipes_list);
 
         try{

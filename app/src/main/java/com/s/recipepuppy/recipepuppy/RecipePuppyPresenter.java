@@ -3,7 +3,7 @@ package com.s.recipepuppy.recipepuppy;
 import android.util.Log;
 
 import com.s.recipepuppy.domain.pojo.Recipe;
-import com.s.recipepuppy.domain.pojo.Recipes;
+import com.s.recipepuppy.domain.pojo.RecipesResponse;
 
 import java.util.List;
 
@@ -27,9 +27,9 @@ public class RecipePuppyPresenter implements RecipePuppyContract.Presenter {
                 .subscribe(this::onSuccess, this::onError);
     }
 
-    private void onSuccess(Recipes recipes){
-        Log.d(TAG, recipes.toString());
-        List<Recipe> recipeList = recipes.getResults();
+    private void onSuccess(RecipesResponse recipesResponse){
+        Log.d(TAG, recipesResponse.toString());
+        List<Recipe> recipeList = recipesResponse.getResults();
         mView.setRecipesToAdapter(recipeList);
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //todo: rename to RecipesResponse
-public class Recipes {
+public class RecipesResponse {
     @SerializedName("title")
     private String title;
 
@@ -20,11 +20,11 @@ public class Recipes {
     @SerializedName("results")
     private List<Recipe> results = new ArrayList<>();
 
-    public Recipes() {
+    public RecipesResponse() {
 
     }
 
-    public Recipes(Recipes other) {
+    public RecipesResponse(RecipesResponse other) {
         this.title = other.title;
         this.version = other.version;
         this.href = other.href;
@@ -49,7 +49,7 @@ public class Recipes {
 
     @Override
     public String toString() {
-        return "Recipes{" +
+        return "RecipesResponse{" +
                 "title='" + title + '\'' +
                 ", version=" + version +
                 ", href='" + href + '\'' +
