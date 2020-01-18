@@ -29,6 +29,7 @@ public class RecipePuppyPresenter implements RecipePuppyContract.Presenter {
 
     private void onSuccess(RecipesResponse recipesResponse) {
         Log.d(TAG, recipesResponse.toString());
+        mView.setRecipesResponse(recipesResponse);
         List<Recipe> recipeList = recipesResponse.getResults();
         mView.setRecipesToAdapter(recipeList);
     }

@@ -26,7 +26,6 @@ public class Recipe {
         this.thumbnail = other.thumbnail;
     }
 
-    // todo: старайся в POJO объектах по минимуму использовать префикс get +
     public String title() {
         return title;
     }

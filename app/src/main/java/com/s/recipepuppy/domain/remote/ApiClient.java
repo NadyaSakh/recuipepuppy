@@ -11,7 +11,6 @@ public final class ApiClient {
     private final Retrofit mRetrofit;
     private PuppyRecipesAPI mPuppyRecipesAPI;
 
-    //Этот класс должен быть singleton-объектом, todo:почему? + потому что в однопоточном приложении должен быть единственный экземпляр api, и предоставлять глобальную точку доступа к экземпляру этого класса
     public PuppyRecipesAPI puppyRecipesAPI() {
         if (mPuppyRecipesAPI == null) {
             mPuppyRecipesAPI = mRetrofit.create(PuppyRecipesAPI.class);

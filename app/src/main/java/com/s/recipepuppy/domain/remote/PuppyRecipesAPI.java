@@ -10,7 +10,7 @@ public interface PuppyRecipesAPI {
     /**
      * метод получения списка рецептов
      */
-    @GET("?") //todo: @Query должен автоматически подставлять '?'
+    @GET("?")
     Single<RecipesResponse> fetchPuppyRecipes(
             @Query("i") String ingredients,
             @Query("q") String query,

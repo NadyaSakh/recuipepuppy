@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: rename to RecipesResponse +
 public class RecipesResponse {
     @SerializedName("title")
     private String title;

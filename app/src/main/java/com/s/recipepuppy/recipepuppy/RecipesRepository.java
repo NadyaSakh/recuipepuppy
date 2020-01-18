@@ -12,8 +12,6 @@ import io.reactivex.schedulers.Schedulers;
 class RecipesRepository {
     private static final String TAG = RecipesRepository.class.getSimpleName();
 
-    // todo: конструктор по умолчанию создается сам +
-
     Single<RecipesResponse> loadRecipes() {
         Log.d(TAG, "Start loading");
         return App.api().fetchPuppyRecipes("onions,garlic", "omelet", 3)

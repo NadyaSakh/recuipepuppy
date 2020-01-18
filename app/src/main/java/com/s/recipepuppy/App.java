@@ -13,7 +13,6 @@ import com.s.recipepuppy.domain.remote.PuppyRecipesAPI;
 
 
 public class App extends Application {
-    // todo: m? или s? +
     private static ApiClient sApiCient;
 
     @NonNull

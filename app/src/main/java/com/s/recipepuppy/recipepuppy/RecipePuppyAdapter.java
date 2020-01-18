@@ -1,6 +1,6 @@
 package com.s.recipepuppy.recipepuppy;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,6 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
     private final static String TAG = RecipePuppyAdapter.class.getSimpleName();
 
     private List<Recipe> mRecipeList = new ArrayList<>();
-    //todo: контекст можно получить из itemView см. ниже +
 
     @NonNull
     @Override
@@ -44,6 +43,7 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
     }
 
     void addAllRecipes(List<Recipe> list) {
+        Log.d(TAG, "Добавление всех рецептов в адаптер");
         mRecipeList.clear();
         mRecipeList.addAll(list);
         notifyDataSetChanged();
@@ -66,7 +66,7 @@ public class RecipePuppyAdapter extends RecyclerView.Adapter<RecipePuppyAdapter.
             mIngredients.setText(recipe.ingredients());
             String link = recipe.thumbnail();
             if (!link.isEmpty()) {
-                Glide.with(itemView.getContext()) // todo: стараемся сократить область использования context +
+                Glide.with(itemView.getContext())
                         .load(link)
                         .into(mImage);
             }
