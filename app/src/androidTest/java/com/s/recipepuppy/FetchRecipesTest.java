@@ -16,11 +16,12 @@ public class FetchRecipesTest {
         api.puppyRecipesAPI()
                 .fetchPuppyRecipes("onions,garlic", "omelet", 3)
                 .map(response -> {
-                    Log.w("RESULTING: ", response.toString());
+                    Log.w("RESULT: ", response.toString());
                     return response;
                 })
                 .doOnError((e) -> {
                     String errorMessage = e.getMessage();
+                    Log.e("ERROR WHILE FETCHING", errorMessage);
                     Assert.fail(errorMessage);
                 })
                 .test()
