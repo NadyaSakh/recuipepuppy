@@ -2,6 +2,7 @@ package com.s.recipepuppy.domain.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
 
 public class Recipe {
     @SerializedName("title")
@@ -42,6 +43,7 @@ public class Recipe {
         return thumbnail;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return "Recipe{" +
